@@ -19,87 +19,95 @@ public class SpringSecurityAppApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(SpringSecurityAppApplication.class, args);
-
-
 	}
-	/*
+/*
 	@Bean
-	CommandLineRunner init(UserRepository userRepository){
-		return args->{
-			//PERMISSION
-			PermissionEntity createpermissionEntity= PermissionEntity.builder()
+	CommandLineRunner init(UserRepository userRepository) {
+		return args -> {
+			// Create PERMISSIONS
+			PermissionEntity createPermission = PermissionEntity.builder()
 					.name("CREATE")
 					.build();
-			PermissionEntity readpermissionEntity= PermissionEntity.builder()
+
+			PermissionEntity readPermission = PermissionEntity.builder()
 					.name("READ")
 					.build();
-			PermissionEntity updatepermissionEntity= PermissionEntity.builder()
+
+			PermissionEntity updatePermission = PermissionEntity.builder()
 					.name("UPDATE")
 					.build();
-			PermissionEntity deletepermissionEntity= PermissionEntity.builder()
+
+			PermissionEntity deletePermission = PermissionEntity.builder()
 					.name("DELETE")
 					.build();
-			PermissionEntity refactor= PermissionEntity.builder()
+
+			PermissionEntity refactorPermission = PermissionEntity.builder()
 					.name("REFACTOR")
 					.build();
 
-			//Create ROLES
-			RoleEntity createAdmin= RoleEntity.builder()
+			// Create ROLES
+			RoleEntity roleAdmin = RoleEntity.builder()
 					.roleEnum(RoleEnum.ADMIN)
-					.permissionList(Set.of(createpermissionEntity,readpermissionEntity,updatepermissionEntity,deletepermissionEntity))
-					.build();
-			RoleEntity roleUser= RoleEntity.builder()
-					.roleEnum(RoleEnum.USER)
-					.permissionList(Set.of(createpermissionEntity,readpermissionEntity))
-					.build();
-			RoleEntity createInvited= RoleEntity.builder()
-					.roleEnum(RoleEnum.INTVITED)
-					.permissionList(Set.of(readpermissionEntity))
-					.build();
-			RoleEntity createDev= RoleEntity.builder()
-					.roleEnum(RoleEnum.DEVELOPER)
-					.permissionList(Set.of(createpermissionEntity,readpermissionEntity,updatepermissionEntity,deletepermissionEntity,refactor))
+					.permissionList(Set.of(createPermission, readPermission, updatePermission, deletePermission))
 					.build();
 
-			//Create USER
-			UserEntity userSantiago=UserEntity.builder()
+			RoleEntity roleUser = RoleEntity.builder()
+					.roleEnum(RoleEnum.USER)
+					.permissionList(Set.of(createPermission, readPermission))
+					.build();
+
+			RoleEntity roleInvited = RoleEntity.builder()
+					.roleEnum(RoleEnum.INVITED)
+					.permissionList(Set.of(readPermission))
+					.build();
+
+			RoleEntity roleDeveloper = RoleEntity.builder()
+					.roleEnum(RoleEnum.DEVELOPER)
+					.permissionList(Set.of(createPermission, readPermission, updatePermission, deletePermission, refactorPermission))
+					.build();
+
+			// CREATE USERS
+			UserEntity userSantiago = UserEntity.builder()
 					.username("santiago")
-					.password("$2a$10$F2q5qjVWoBMugxLpc32W7.UKTIl75NaRkF60y.4hG0OWWu9UlIXSC")
+					.password("$2a$10$cMY29RPYoIHMJSuwRfoD3eQxU1J5Rww4VnNOUOAEPqCBshkNfrEf6")
 					.isEnabled(true)
 					.accountNoExpired(true)
 					.accountNoLocked(true)
 					.credentialNoExpired(true)
-					.roles(Set.of(createAdmin))
+					.roles(Set.of(roleAdmin))
 					.build();
-			UserEntity userIsabella=UserEntity.builder()
-					.username("isabella")
-					.password("$2a$10$F2q5qjVWoBMugxLpc32W7.UKTIl75NaRkF60y.4hG0OWWu9UlIXSC")
+
+			UserEntity userDaniel = UserEntity.builder()
+					.username("daniel")
+					.password("$2a$10$cMY29RPYoIHMJSuwRfoD3eQxU1J5Rww4VnNOUOAEPqCBshkNfrEf6")
 					.isEnabled(true)
 					.accountNoExpired(true)
 					.accountNoLocked(true)
 					.credentialNoExpired(true)
 					.roles(Set.of(roleUser))
 					.build();
-			UserEntity userFlabio=UserEntity.builder()
-					.username("flabio")
-					.password("$2a$10$F2q5qjVWoBMugxLpc32W7.UKTIl75NaRkF60y.4hG0OWWu9UlIXSC")
+
+			UserEntity userAndrea = UserEntity.builder()
+					.username("andrea")
+					.password("$2a$10$cMY29RPYoIHMJSuwRfoD3eQxU1J5Rww4VnNOUOAEPqCBshkNfrEf6")
 					.isEnabled(true)
 					.accountNoExpired(true)
 					.accountNoLocked(true)
 					.credentialNoExpired(true)
-					.roles(Set.of(createInvited))
+					.roles(Set.of(roleInvited))
 					.build();
 
-			UserEntity userRubiela=UserEntity.builder()
-					.username("rubiela")
-					.password("$2a$10$F2q5qjVWoBMugxLpc32W7.UKTIl75NaRkF60y.4hG0OWWu9UlIXSC")
+			UserEntity userAnyi = UserEntity.builder()
+					.username("anyi")
+					.password("$2a$10$cMY29RPYoIHMJSuwRfoD3eQxU1J5Rww4VnNOUOAEPqCBshkNfrEf6")
 					.isEnabled(true)
 					.accountNoExpired(true)
 					.accountNoLocked(true)
 					.credentialNoExpired(true)
-					.roles(Set.of(createDev))
+					.roles(Set.of(roleDeveloper))
 					.build();
-			userRepository.saveAll(List.of( userSantiago,userFlabio,userRubiela,userIsabella));
+
+			userRepository.saveAll(List.of(userSantiago, userDaniel, userAndrea, userAnyi));
 		};
 	}*/
 

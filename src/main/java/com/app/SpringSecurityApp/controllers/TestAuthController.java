@@ -4,8 +4,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/method")
 //@PreAuthorize("denyAll()")
+
 public class TestAuthController {
 
 
