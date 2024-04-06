@@ -1,4 +1,4 @@
-package com.app.SpringSecurityApp.util.mappers;
+package com.app.SpringSecurityApp.Service.mappers;
 
 import com.app.SpringSecurityApp.dto.ConsolidationDTO;
 import com.app.SpringSecurityApp.persistence.entity.ConsolidationEntity;

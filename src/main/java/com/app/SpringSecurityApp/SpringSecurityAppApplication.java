@@ -20,7 +20,8 @@ public class SpringSecurityAppApplication {
 
 		SpringApplication.run(SpringSecurityAppApplication.class, args);
 	}
-/*
+
+	/*
 	@Bean
 	CommandLineRunner init(UserRepository userRepository) {
 		return args -> {
@@ -109,6 +110,7 @@ public class SpringSecurityAppApplication {
 
 			userRepository.saveAll(List.of(userSantiago, userDaniel, userAndrea, userAnyi));
 		};
-	}*/
+	}
+	*/
 
 }

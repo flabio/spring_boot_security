@@ -7,17 +7,17 @@ services:
     build: .
     ports:
       - 8080:8080
-    entrypoint:
+    environment:
       - DATABASE_URL=jdbc:postgresql://java_db:5432/postgres
       - DATABASE_USERNAME=postgres
-      - DATABASE_PASSWORD=passwd
+      - DATABASE_PASSWORD=postgres
     depends_on:
       - java_db
   java_db:
     container_name: java_db
     image: postgres:12
     ports:
-      - 5432:5432
+      - 5433:5432
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres

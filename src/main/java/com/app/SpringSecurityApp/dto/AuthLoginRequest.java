@@ -1,4 +1,4 @@
-package com.app.SpringSecurityApp.controllers.dto;
+package com.app.SpringSecurityApp.dto;
 
 import jakarta.validation.constraints.NotBlank;
 

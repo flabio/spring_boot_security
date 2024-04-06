@@ -1,7 +1,7 @@
 package com.app.SpringSecurityApp.Service;
 
-import com.app.SpringSecurityApp.controllers.dto.AuthLoginRequest;
-import com.app.SpringSecurityApp.controllers.dto.AuthReponse;
+import com.app.SpringSecurityApp.dto.AuthLoginRequest;
+import com.app.SpringSecurityApp.dto.AuthReponse;
 import com.app.SpringSecurityApp.persistence.entity.UserEntity;
 import com.app.SpringSecurityApp.persistence.repositories.UserRepository;
 

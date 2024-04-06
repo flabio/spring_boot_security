@@ -15,6 +15,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -30,6 +31,7 @@ import java.util.Arrays;
 import java.util.Collections;
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfig {
 
     private JwtUtils jwtUtils;
@@ -37,6 +39,7 @@ public class SecurityConfig {
     public SecurityConfig(JwtUtils jwtUtils){
         this.jwtUtils=jwtUtils;
     }
+    /*
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, AuthenticationProvider authenticationProvider) throws Exception {
         return httpSecurity
@@ -54,13 +57,30 @@ public class SecurityConfig {
                     http.requestMatchers(HttpMethod.PUT, "/method/put").hasAuthority("UPDATE");
                     //consolidation
                     http.requestMatchers(HttpMethod.GET,"/consolidation/get").hasAnyRole("ADMIN","DEVELOPER");
+                    http.requestMatchers(HttpMethod.GET,"/consolidation/find_by_id/{id}").hasAnyRole("ADMIN","DEVELOPER");
+                    http.requestMatchers(HttpMethod.POST,"/consolidation/create").hasAnyRole("ADMIN","DEVELOPER");
+                    http.requestMatchers(HttpMethod.POST,"/consolidation/update").hasAnyRole("ADMIN","DEVELOPER");
+                    http.requestMatchers(HttpMethod.POST,"/consolidation/delete").hasAnyRole("ADMIN","DEVELOPER");
                     http.anyRequest().denyAll();
 
                 })
                 .cors(cors-> cors.configurationSource(corsConfigurationSource()))
                 .addFilterBefore(new JwtTokenValidator(jwtUtils), BasicAuthenticationFilter.class)
                 .build();
+    }*/
+
+
+    @Bean
+    SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, AuthenticationProvider authenticationProvider) throws Exception {
+        return httpSecurity
+                .csrf(csrf -> csrf.disable())
+                .httpBasic(Customizer.withDefaults())
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .cors(cors-> cors.configurationSource(corsConfigurationSource()))
+                .addFilterBefore(new JwtTokenValidator(jwtUtils), BasicAuthenticationFilter.class)
+                .build();
     }
+
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();

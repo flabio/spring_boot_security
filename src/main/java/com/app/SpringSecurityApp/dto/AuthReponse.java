@@ -1,4 +1,4 @@
-package com.app.SpringSecurityApp.controllers.dto;
+package com.app.SpringSecurityApp.dto;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 

@@ -1,8 +1,8 @@
 package com.app.SpringSecurityApp.controllers;
 
 import com.app.SpringSecurityApp.Service.UserDetailServiceImpl;
-import com.app.SpringSecurityApp.controllers.dto.AuthLoginRequest;
-import com.app.SpringSecurityApp.controllers.dto.AuthReponse;
+import com.app.SpringSecurityApp.dto.AuthLoginRequest;
+import com.app.SpringSecurityApp.dto.AuthReponse;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
